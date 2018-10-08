@@ -5,7 +5,7 @@ group='com.github.lcfn'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.leibown.lcfncommonlibrary"
+        applicationId "com.leibown.lcfnbaselibrary"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
