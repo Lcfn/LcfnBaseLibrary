@@ -33,7 +33,7 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
 
     @Override
     public void bindViews(Bundle savedInstanceState) {
-
+        getContentView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.bg_f2));
         actionBar = View.inflate(getContext(), R.layout.layout_actionbar, null);
         //设置ActionBar，传入ActionBar布局
         setActionBar(actionBar);
