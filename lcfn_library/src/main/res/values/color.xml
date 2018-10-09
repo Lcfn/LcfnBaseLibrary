@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#000000</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
     <color name="white">#ffffff</color>
+    <color name="white_a99">#99ffffff</color>
+
+
+    <color name="black">#000000</color>
+
+    <color name="dividiline_b3">#b3b3b3</color>
+    <color name="dividiline_dd">#dddddd</color>
+    <color name="dividiline_bd">#bdbdbd</color>
+    <color name="dividiline_d5">#D5D5D5</color>
+    <color name="dividiline_e2">#E2E2E2</color>
     <color name="dividiline_d3">#D3D3D3</color>
+    <color name="dividiline_e6">#E6E6E6</color>
+    <color name="dividiline_d8">#d8d8d8</color>
+
+    <color name="border_555">#555555</color>
+
+    <color name="search_bg">#E7E7E7</color>
+    <color name="tcolor_888">#888888</color>
+    <color name="tcolor_999">#999999</color>
+
+    <color name="tcolor_66">#666666</color>
+    <color name="tcolor_33">#333</color>
+    <color name="tcolor_AA">#AAA</color>
+    <color name="tcolor_fa1300">#fa1200</color>
+    <color name="tcolor_3C1FED">#3C1FED</color>
+    <color name="tcolor_CF45C9">#CF45C9</color>
+
+
+    <color name="bg_container">#f2f2f2</color>
+    <color name="tcolor_e0072b">#e0072b</color>
+    <color name="bg_f5">#f5f5f5</color>
+    <color name="tcolor_yellow">#DE8911</color>
+
+    <color name="red_main">#d42112</color>
+
+    <color name="bg_f2">#f2f2f2</color>
+
+    <color name="tcolor_6176a9">#6176a9</color>
+
+    <color name="tcolor_85">#858585</color>
+    <color name="tcolor_db">#dbdbdb</color>
+    <color name="bg_f93524">#f93524</color>
+
+
+    <color name="bg_1e2331">#1E2331</color>
+    <color name="bg_E9483A">#E9483A</color>
+    <color name="bg_e2dfdf">#E2dfdf</color>
+    <color name="bg_e9e9e9">#e9e9e9</color>
+    <color name="bg_e6e6e6">#e6e6e6</color>
+    <color name="bg_c4c4c4">#c4c4c4</color>
+    <color name="bg_F9C4C4">#F9C4C4</color>
+    <color name="bg_e3e3e3">#E3E3E3</color>
+    <color name="bg_ffbe5b">#FFBE5B</color>
+    <color name="bg_fb1111">#FB1111</color>
+    <color name="bg_fdf1c3">#FDF1C3</color>
+    <color name="bg_b59721">#B59721</color>
+    <color name="bg_4D84FF">#4D84FF</color>
+    <color name="bg_FBEDCA">#FBEDCA</color>
+    <color name="bg_ecebeb">#ECEBEB</color>
+    <color name="bg_FF8B00">#FF8B00</color>
+
+    <color name="bg_c1c1c1">#c1c1c1</color>
+    <color name="bg_e4e4e4">#E4E4E4</color>
+    <color name="bg_5274f4">#5274F4</color>
+    <color name="bg_d6defd">#D6DEFD</color>
+
 </resources>

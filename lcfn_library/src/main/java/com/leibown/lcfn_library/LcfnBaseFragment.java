@@ -18,7 +18,6 @@ import com.leibown.library.MultifunctionalFragment;
 public abstract class LcfnBaseFragment extends MultifunctionalFragment implements View.OnClickListener {
 
     private View actionBar;
-
     public ImageView iv_back;
 
     public TextView tv_title;
