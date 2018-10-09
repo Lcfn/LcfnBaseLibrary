@@ -38,6 +38,7 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
         //设置ActionBar，传入ActionBar布局
         setActionBar(actionBar);
         setActionBarBackgroudColor(ContextCompat.getColor(getContext(), R.color.white));
+        setStatusBarBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         hideActionBar();
 
         iv_back = getContentView().findViewById(R.id.iv_back);
