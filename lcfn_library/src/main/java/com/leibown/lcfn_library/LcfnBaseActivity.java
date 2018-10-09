@@ -32,7 +32,7 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
 
     @Override
     public void bindViews(Bundle savedInstanceState) {
-
+        getContentView().setBackgroundColor(ContextCompat.getColor(this, R.color.bg_f2));
 
         ActivityStackManager.getInstance().addActivity(new WeakReference<LcfnBaseActivity>(this));
 
