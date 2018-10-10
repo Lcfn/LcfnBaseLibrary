@@ -60,4 +60,8 @@ public class ToastUtils {
     public static void show(String format, int duration, Object... args) {
         show(String.format(format, args), duration);
     }
+
+    public static void showLong(CharSequence text) {
+        show(text, Toast.LENGTH_LONG);
+    }
 }
