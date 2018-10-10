@@ -258,4 +258,15 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
     public void reTry() {
         loadData();
     }
+
+    public void showActionBarBottomLine() {
+        if (actionBar != null) {
+            actionBar.findViewById(R.id.action_bar_bottom_line).setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void setRightImageRes(int res) {
+        if (tv_righ_img != null)
+            tv_righ_img.setImageResource(res);
+    }
 }
