@@ -267,6 +267,16 @@ public class Utils {
         }
     }
 
+    public static String getMobileFormat(String theMobileStr) {
+        if (theMobileStr.length() == 11) {
+            return theMobileStr.substring(0, 3) + "\t" + theMobileStr.substring(3, 7) + "\t" + theMobileStr.substring(7);
+
+        } else {
+            return theMobileStr;
+        }
+
+    }
+
 }
 
 
