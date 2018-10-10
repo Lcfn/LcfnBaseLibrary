@@ -21,7 +21,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  * Created by apple on 2018/4/2.
  */
 
-public class SwipeRecyclerView extends LinearLayout {
+public class SwipeRecyclerView extends LinearLayout implements ViewStatusCallBack {
 
     private final int NomalStatus = 0;
     private final int LoadingStatus = 1;
@@ -58,11 +58,11 @@ public class SwipeRecyclerView extends LinearLayout {
 
         LayoutInflater mInflater = LayoutInflater.from(context);
         Contentview = mInflater.inflate(R.layout.view_swipe_recyclerview, null);
+
         addView(Contentview, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-
-        mStatusContainer = new StatusViewContainer();
         DefaultStatusView defaultStatusView = new DefaultStatusView(context);
+        mStatusContainer = new StatusViewContainer();
         mStatusContainer.setStatusView(defaultStatusView);
         addView(mStatusContainer.getView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mStatusContainer.getView().setVisibility(View.GONE);
@@ -108,6 +108,7 @@ public class SwipeRecyclerView extends LinearLayout {
     /**
      * 显示Loading状态
      */
+    @Override
     public void showLoading() {
         Contentview.setVisibility(View.GONE);
         mStatusContainer.getView().setVisibility(View.VISIBLE);
@@ -118,6 +119,7 @@ public class SwipeRecyclerView extends LinearLayout {
     /**
      * 显示Empty状态
      */
+    @Override
     public void showEmpty() {
         Contentview.setVisibility(View.GONE);
         mStatusContainer.getView().setVisibility(View.VISIBLE);
@@ -128,6 +130,7 @@ public class SwipeRecyclerView extends LinearLayout {
     /**
      * 显示Retry状态
      */
+    @Override
     public void showRetry() {
         Contentview.setVisibility(View.GONE);
         mStatusContainer.getView().setVisibility(View.VISIBLE);
@@ -143,6 +146,10 @@ public class SwipeRecyclerView extends LinearLayout {
         mStatusContainer.getStatusView().setEmptyText(emptyText);
     }
 
+    public void setEmptyImgRes(int imgRes) {
+        mStatusContainer.getStatusView().setEmptyImgRes(imgRes);
+    }
+
     public void setReTryText(String reTryText) {
         mStatusContainer.getStatusView().setErrorText(reTryText);
     }
@@ -151,6 +158,7 @@ public class SwipeRecyclerView extends LinearLayout {
     /**
      * 显示内容
      */
+    @Override
     public void showContent() {
         Contentview.setVisibility(View.VISIBLE);
         mStatusContainer.getView().setVisibility(View.GONE);
@@ -174,6 +182,7 @@ public class SwipeRecyclerView extends LinearLayout {
         recyclerView.setPadding(left, top, right, bottom);
     }
 
+    @Override
     public void loadComplete() {
         if (swipeRefreshLayout.isRefreshing())
             swipeRefreshLayout.finishRefresh();
@@ -239,6 +248,7 @@ public class SwipeRecyclerView extends LinearLayout {
         void onRetry();
     }
 
+    @Override
     public void setNoMoreData() {
         swipeRefreshLayout.setNoMoreData(true);
     }
