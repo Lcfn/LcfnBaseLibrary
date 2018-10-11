@@ -150,6 +150,15 @@ public class SwipeRecyclerView extends LinearLayout implements ViewStatusCallBac
         mStatusContainer.getStatusView().setEmptyImgRes(imgRes);
     }
 
+
+    public void setErrorImgRes(int imgRes) {
+        mStatusContainer.getStatusView().setErrorImgRes(imgRes);
+    }
+
+    public void setLoadingImgRes(int imgRes) {
+        mStatusContainer.getStatusView().setLoadingImgRes(imgRes);
+    }
+
     public void setReTryText(String reTryText) {
         mStatusContainer.getStatusView().setErrorText(reTryText);
     }
