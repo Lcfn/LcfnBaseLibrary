@@ -65,6 +65,7 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
 
     @Override
     public void onFragmentFirstVisible() {
+        super.onFragmentFirstVisible();
         loadData();
     }
 
