@@ -59,6 +59,7 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
         tv_right.setVisibility(ShowRightText() ? View.VISIBLE : View.GONE);
         hideStatusBar();
         initViews();
+        showLoading();
     }
 
 
