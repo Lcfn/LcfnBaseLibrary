@@ -261,4 +261,25 @@ public class SwipeRecyclerView extends LinearLayout implements ViewStatusCallBac
     public void setNoMoreData() {
         swipeRefreshLayout.setNoMoreData(true);
     }
+
+
+    /**
+     * 设置状态view的方法
+     *
+     * @param view
+     */
+    public void setStatusView(View view) {
+        removeView(mStatusContainer.getView());
+        mStatusContainer.setStatusView(view);
+        addView(mStatusContainer.getView());
+        mStatusContainer.getView().setVisibility(GONE);
+        mStatusContainer.setOnRetryListener(new OnClickListener() {
+            public void onClick(View v) {
+                if (onLoadListener != null) {
+                    onLoadListener.onRetry();
+                }
+            }
+        });
+
+    }
 }
