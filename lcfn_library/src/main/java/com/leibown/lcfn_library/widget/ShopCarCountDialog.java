@@ -19,7 +19,7 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
     private EditText editText;
 
     public ShopCarCountDialog(@NonNull Context context, int count, OnCountChangeListener onCountChangeListener) {
-        super(context);
+        super(context, R.style.CustomStyle);
         this.onCountChangeListener = onCountChangeListener;
         this.count = count;
     }
