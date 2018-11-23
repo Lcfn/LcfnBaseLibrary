@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.leibown.lcfn_library.R;
 import com.leibown.library.widget.status.DefaultStatusView;
+import com.leibown.library.widget.status.StatusController;
 import com.leibown.library.widget.status.StatusViewContainer;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -21,7 +22,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  * Created by apple on 2018/4/2.
  */
 
-public class SwipeRecyclerView extends LinearLayout implements ViewStatusCallBack {
+public class SwipeRecyclerView extends LinearLayout implements StatusController {
 
     private final int NomalStatus = 0;
     private final int LoadingStatus = 1;
@@ -159,9 +160,11 @@ public class SwipeRecyclerView extends LinearLayout implements ViewStatusCallBac
         mStatusContainer.getStatusView().setLoadingImgRes(imgRes);
     }
 
-    public void setReTryText(String reTryText) {
-        mStatusContainer.getStatusView().setErrorText(reTryText);
+    @Override
+    public void setErrorText(String s) {
+        mStatusContainer.getStatusView().setErrorText(s);
     }
+
 
 
     /**
