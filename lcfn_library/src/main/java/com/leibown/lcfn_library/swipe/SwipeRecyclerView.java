@@ -166,7 +166,6 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
     }
 
 
-
     /**
      * 显示内容
      */
@@ -284,5 +283,14 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
             }
         });
 
+    }
+
+    /**
+     * 获取状态view容器
+     *
+     * @return
+     */
+    public StatusViewContainer getStatusViewContainer() {
+        return mStatusContainer;
     }
 }
