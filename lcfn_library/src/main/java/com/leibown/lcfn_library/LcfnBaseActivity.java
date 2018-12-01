@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.leibown.library.MultifunctionalActivity;
+import com.leibown.library.utils.DisplayUtil;
 
 import java.lang.ref.WeakReference;
 
@@ -44,6 +45,8 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
 //        setStatusView(statusView, R.id.tv_status_content);
 
         actionBar = View.inflate(this, R.layout.layout_actionbar, null);
+        TextView textView = actionBar.findViewById(R.id.tv_title);
+        textView.setWidth((int) (DisplayUtil.getScreenWidth(this) * 0.5));
 
         //设置ActionBar，传入ActionBar布局
         setActionBar(actionBar);
