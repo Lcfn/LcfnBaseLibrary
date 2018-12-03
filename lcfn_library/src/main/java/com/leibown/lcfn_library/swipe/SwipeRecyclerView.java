@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 
 import com.leibown.lcfn_library.R;
 import com.leibown.library.widget.status.DefaultStatusView;
-import com.leibown.library.widget.status.StatusController;
 import com.leibown.library.widget.status.StatusViewContainer;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -22,7 +21,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  * Created by apple on 2018/4/2.
  */
 
-public class SwipeRecyclerView extends LinearLayout implements StatusController {
+public class SwipeRecyclerView extends LinearLayout {
 
     private final int NomalStatus = 0;
     private final int LoadingStatus = 1;
@@ -59,14 +58,13 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
 
         LayoutInflater mInflater = LayoutInflater.from(context);
         Contentview = mInflater.inflate(R.layout.view_swipe_recyclerview, null);
-
-        addView(Contentview, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
         DefaultStatusView defaultStatusView = new DefaultStatusView(context);
         mStatusContainer = new StatusViewContainer(context);
         mStatusContainer.setStatusView(defaultStatusView);
+        mStatusContainer.setContentView(Contentview);
+
         addView(mStatusContainer.getView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        mStatusContainer.getView().setVisibility(View.GONE);
+        mStatusContainer.showContent();
         mStatusContainer.setOnRetryListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,21 +107,16 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
     /**
      * 显示Loading状态
      */
-    @Override
     public void showLoading() {
-        Contentview.setVisibility(View.GONE);
-        mStatusContainer.getView().setVisibility(View.VISIBLE);
         mStatusContainer.showLoading();
         status = LoadingStatus;
+
     }
 
     /**
      * 显示Empty状态
      */
-    @Override
     public void showEmpty() {
-        Contentview.setVisibility(View.GONE);
-        mStatusContainer.getView().setVisibility(View.VISIBLE);
         mStatusContainer.showEmpty();
         status = EmptyStatus;
     }
@@ -131,48 +124,42 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
     /**
      * 显示Retry状态
      */
-    @Override
     public void showRetry() {
-        Contentview.setVisibility(View.GONE);
-        mStatusContainer.getView().setVisibility(View.VISIBLE);
         mStatusContainer.showError();
         status = ErrorStatus;
     }
 
     public void setLoadingText(String loadingText) {
-        mStatusContainer.getStatusView().setLoadingText(loadingText);
+        mStatusContainer.setLoadingText(loadingText);
     }
 
     public void setEmptyText(String emptyText) {
-        mStatusContainer.getStatusView().setEmptyText(emptyText);
+        mStatusContainer.setEmptyText(emptyText);
     }
 
     public void setEmptyImgRes(int imgRes) {
-        mStatusContainer.getStatusView().setEmptyImgRes(imgRes);
+        mStatusContainer.setEmptyImgRes(imgRes);
     }
 
 
     public void setErrorImgRes(int imgRes) {
-        mStatusContainer.getStatusView().setErrorImgRes(imgRes);
+        mStatusContainer.setErrorImgRes(imgRes);
     }
 
     public void setLoadingImgRes(int imgRes) {
-        mStatusContainer.getStatusView().setLoadingImgRes(imgRes);
+        mStatusContainer.setLoadingImgRes(imgRes);
     }
 
-    @Override
     public void setErrorText(String s) {
-        mStatusContainer.getStatusView().setErrorText(s);
+        mStatusContainer.setErrorText(s);
     }
 
 
     /**
      * 显示内容
      */
-    @Override
     public void showContent() {
-        Contentview.setVisibility(View.VISIBLE);
-        mStatusContainer.getView().setVisibility(View.GONE);
+        mStatusContainer.showContent();
         status = NomalStatus;
     }
 
@@ -193,7 +180,6 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
         recyclerView.setPadding(left, top, right, bottom);
     }
 
-    @Override
     public void loadComplete() {
         if (swipeRefreshLayout.isRefreshing())
             swipeRefreshLayout.finishRefresh();
@@ -259,7 +245,6 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
         void onRetry();
     }
 
-    @Override
     public void setNoMoreData() {
         swipeRefreshLayout.setNoMoreData(true);
     }
