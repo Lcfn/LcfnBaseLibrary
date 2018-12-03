@@ -27,11 +27,6 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
     public ImageView tv_righ_img;
 
     @Override
-    public boolean isNeedStatusView() {
-        return true;
-    }
-
-    @Override
     public void bindViews(Bundle savedInstanceState) {
         getContentView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.bg_f2));
         actionBar = View.inflate(getContext(), R.layout.layout_actionbar, null);

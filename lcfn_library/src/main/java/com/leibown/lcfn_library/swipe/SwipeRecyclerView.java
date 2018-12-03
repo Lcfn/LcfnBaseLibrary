@@ -63,7 +63,7 @@ public class SwipeRecyclerView extends LinearLayout implements StatusController 
         addView(Contentview, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         DefaultStatusView defaultStatusView = new DefaultStatusView(context);
-        mStatusContainer = new StatusViewContainer();
+        mStatusContainer = new StatusViewContainer(context);
         mStatusContainer.setStatusView(defaultStatusView);
         addView(mStatusContainer.getView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mStatusContainer.getView().setVisibility(View.GONE);

@@ -27,11 +27,6 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
 
 
     @Override
-    public boolean isNeedStatusView() {
-        return true;
-    }
-
-    @Override
     public void bindViews(Bundle savedInstanceState) {
         getContentView().setBackgroundColor(ContextCompat.getColor(this, R.color.bg_f2));
 

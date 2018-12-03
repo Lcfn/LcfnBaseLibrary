@@ -26,10 +26,6 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
 
     public ImageView tv_righ_img;
 
-    @Override
-    public boolean isNeedStatusView() {
-        return true;
-    }
 
     @Override
     public void bindViews(Bundle savedInstanceState) {
