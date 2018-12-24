@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.library.MultifunctionalLazyLoadFragment;
+import com.leibown.library.widget.status.StatusViewContainer;
 
 /**
  * Created by leibown on 2018/10/8.
@@ -55,6 +57,60 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
         hideStatusBar();
         showLoading();
         initViews();
+    }
+
+    @Override
+    protected StatusViewContainer initStatusViewContainer() {
+        SwipeStatusViewContainer swipeStatusViewContainer = new SwipeStatusViewContainer(getContext());
+        swipeStatusViewContainer.setOnLoadListener(new OnLoadListener() {
+            @Override
+            public void onRefresh() {
+                LcfnLazyLoadBaseFragment.this.onRefresh();
+            }
+
+            @Override
+            public void onLoadMore() {
+                LcfnLazyLoadBaseFragment.this.onLoadMore();
+            }
+
+            @Override
+            public void onRetry() {
+                onReTry();
+            }
+
+            @Override
+            public void onEmpty() {
+                LcfnLazyLoadBaseFragment.this.onEmpty();
+            }
+        });
+        return swipeStatusViewContainer;
+    }
+
+    public void loadComplete() {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer)
+            ((SwipeStatusViewContainer) getStatusViewContainer()).loadComplete();
+    }
+
+    public void setNoMoreData() {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer)
+            ((SwipeStatusViewContainer) getStatusViewContainer()).setNoMoreData();
+    }
+
+
+    public void onLoadMore() {
+
+    }
+
+    public void onReTry() {
+        loadData();
+    }
+
+    public void onEmpty() {
+        loadData();
+    }
+
+    public void onRefresh() {
+        loadData();
     }
 
 
@@ -256,10 +312,6 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
         unbindButterKnife();
     }
 
-    @Override
-    public void reTry() {
-        loadData();
-    }
 
     public void showActionBarBottomLine() {
         if (actionBar != null) {

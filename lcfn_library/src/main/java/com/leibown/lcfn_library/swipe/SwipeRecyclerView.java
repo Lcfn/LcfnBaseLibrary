@@ -64,13 +64,21 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
         mStatusContainer.setStatusView(defaultStatusView);
         mStatusContainer.setContentView(Contentview);
 
-        addView(mStatusContainer.getView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        addView(mStatusContainer.getRootView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mStatusContainer.showContent();
         mStatusContainer.setOnRetryListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onLoadListener != null) {
                     onLoadListener.onRetry();
+                }
+            }
+        });
+        mStatusContainer.setOnEmptyClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onLoadListener != null) {
+                    onLoadListener.onEmpty();
                 }
             }
         });
@@ -91,6 +99,7 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 if (onLoadListener != null) {
+                    swipeRefreshLayout.setNoMoreData(false);
                     onLoadListener.onRefresh();
                 }
             }
@@ -236,14 +245,6 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
     public void setEnable() {
         swipeRefreshLayout.setEnableRefresh(true);
         swipeRefreshLayout.setEnableLoadMore(true);
-    }
-
-    public interface OnLoadListener {
-        void onRefresh();
-
-        void onLoadMore();
-
-        void onRetry();
     }
 
     public void setNoMoreData() {

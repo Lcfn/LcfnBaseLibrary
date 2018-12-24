@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.library.MultifunctionalFragment;
+import com.leibown.library.widget.status.StatusViewContainer;
 
 /**
  * Created by leibown on 2018/10/8.
@@ -57,6 +59,61 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
         initViews();
         loadData();
     }
+
+    @Override
+    protected StatusViewContainer initStatusViewContainer() {
+        SwipeStatusViewContainer swipeStatusViewContainer = new SwipeStatusViewContainer(getContext());
+        swipeStatusViewContainer.setOnLoadListener(new OnLoadListener() {
+            @Override
+            public void onRefresh() {
+                LcfnBaseFragment.this.onRefresh();
+            }
+
+            @Override
+            public void onLoadMore() {
+                LcfnBaseFragment.this.onLoadMore();
+            }
+
+            @Override
+            public void onRetry() {
+                onReTry();
+            }
+
+            @Override
+            public void onEmpty() {
+                LcfnBaseFragment.this.onEmpty();
+            }
+        });
+        return swipeStatusViewContainer;
+    }
+
+    public void loadComplete() {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer)
+            ((SwipeStatusViewContainer) getStatusViewContainer()).loadComplete();
+    }
+
+    public void setNoMoreData() {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer)
+            ((SwipeStatusViewContainer) getStatusViewContainer()).setNoMoreData();
+    }
+
+
+    public void onLoadMore() {
+
+    }
+
+    public void onReTry() {
+        loadData();
+    }
+
+    public void onEmpty() {
+        loadData();
+    }
+
+    public void onRefresh() {
+        loadData();
+    }
+
 
     public abstract void ButterKnifeInit(View view);
 
@@ -248,11 +305,6 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
     public void onDestroyView() {
         super.onDestroyView();
         unbindButterKnife();
-    }
-
-    @Override
-    public void reTry() {
-        loadData();
     }
 
     public void showActionBarBottomLine() {

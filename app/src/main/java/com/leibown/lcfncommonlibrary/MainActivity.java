@@ -1,12 +1,15 @@
 package com.leibown.lcfncommonlibrary;
 
-import android.widget.ImageView;
+import android.view.View;
 
 import com.leibown.lcfn_library.LcfnBaseActivity;
-import com.leibown.lcfn_library.glide.ShowImageUtils;
+import com.leibown.lcfn_library.swipe.SwipeRecyclerView;
+import com.leibown.library.widget.status.StatusViewContainer;
 
 public class MainActivity extends LcfnBaseActivity {
 
+
+    private OtherStatusViewContainer otherStatusViewContainer;
 
     @Override
     public void ButterKnifeInit() {
@@ -15,8 +18,16 @@ public class MainActivity extends LcfnBaseActivity {
 
     @Override
     protected void initViews() {
-        ImageView iv = findViewById(R.id.iv);
-        ShowImageUtils.showImageView(this, "https://ws4.sinaimg.cn/large/006tKfTcgy1ftbv3p3x6tj308c08c74a.jpg", iv);
+        SwipeRecyclerView swipeRecyclerView  = findViewById(R.id.recyclerview);
+//        ImageView iv = findViewById(R.id.iv);
+//        ShowImageUtils.showImageView(this, "https://ws4.sinaimg.cn/large/006tKfTcgy1ftbv3p3x6tj308c08c74a.jpg", iv);
+
+    }
+
+    @Override
+    protected StatusViewContainer initStatusViewContainer() {
+        otherStatusViewContainer = new OtherStatusViewContainer(this);
+        return otherStatusViewContainer;
     }
 
     @Override
@@ -28,4 +39,35 @@ public class MainActivity extends LcfnBaseActivity {
     public int getResId() {
         return R.layout.activity_main;
     }
+
+    @Override
+    public void Click_Back(View view) {
+        doClick();
+    }
+
+
+    private int count = 0;
+
+
+    public void doClick() {
+        count++;
+        switch (count % 5) {
+            case 0:
+                showContent();
+                break;
+            case 1:
+                showLoading();
+                break;
+            case 2:
+                showEmpty();
+                break;
+            case 3:
+                showRetry();
+                break;
+            case 4:
+                otherStatusViewContainer.showOtherStatusView();
+                break;
+        }
+    }
+
 }

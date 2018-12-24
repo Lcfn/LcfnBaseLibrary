@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/fl_container"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/top"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="@dimen/dp_48"-->
+    <!--android:gravity="center_vertical"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent">-->
+
+
+    <!--<com.lcfn.lcfnian.widget.TabSelectVIew-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--app:img_drawable="@drawable/icon_arrow_below"-->
+    <!--app:title_text="汽车品牌">-->
+
+    <!--</com.lcfn.lcfnian.widget.TabSelectVIew>-->
+
+
+    <!--<View-->
+    <!--android:layout_width="@dimen/dp_1"-->
+    <!--android:layout_height="@dimen/dp_30"-->
+    <!--android:background="@color/dividiline_b3" />-->
+
+
+    <!--<com.lcfn.lcfnian.widget.TabSelectVIew-->
+    <!--android:layout_width="0dp"-->
+
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--app:img_drawable="@drawable/icon_arrow_below"-->
+    <!--app:title_text="渝北区">-->
+
+    <!--</com.lcfn.lcfnian.widget.TabSelectVIew>-->
+
+    <!--<View-->
+    <!--android:layout_width="@dimen/dp_1"-->
+    <!--android:layout_height="@dimen/dp_30"-->
+    <!--android:background="@color/dividiline_b3" />-->
+
+    <!--<com.lcfn.lcfnian.widget.TabSelectVIew-->
+    <!--android:layout_width="0dp"-->
+
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--app:img_drawable="@drawable/icon_arrow_below"-->
+    <!--app:title_text="好评优先">-->
+
+    <!--</com.lcfn.lcfnian.widget.TabSelectVIew>-->
+
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+    <!--android:id="@+id/line_h1"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="@dimen/dp_1"-->
+    <!--android:background="@color/dividiline_b3"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/top" />-->
+
+    <!--<com.leibown.lcfn_library.swipe.SwipeRecyclerViewView&ndash;&gt;-->
+    <!--android:id="@+id/swiperecyclerview"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/line_h1">-->
+
+    <!--<!com.leibown.lcfn_library.swipe.SwipeRecyclerViewView>&ndash;&gt;-->
+
+    <FrameLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:background="@color/tcolor_33" />
+
+    <com.leibown.lcfn_library.swipe.SwipeRecyclerView
+        android:id="@+id/srv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
