@@ -126,6 +126,9 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
         });
     }
 
+    public void setStatusContainer(Context context, StatusViewContainer statusViewContainer) {
+        initStatusContainer(context, statusViewContainer);
+    }
 
     /**
      * 显示Loading状态
