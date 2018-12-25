@@ -5,13 +5,13 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.leibown.lcfn_library.LcfnLazyLoadBaseFragment;
+import com.leibown.lcfn_library.LcfnBaseFragment;
 import com.leibown.lcfn_library.utils.ToastUtils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends LcfnLazyLoadBaseFragment {
+public class BlankFragment extends LcfnBaseFragment {
 
     @Override
     public int getResId() {
