@@ -7,16 +7,11 @@ import android.view.View;
 
 import com.leibown.lcfn_library.LcfnLazyLoadBaseFragment;
 import com.leibown.lcfn_library.utils.ToastUtils;
-import com.leibown.lcfn_library.SwipeStatusViewContainer;
-import com.leibown.library.widget.status.StatusViewContainer;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class BlankFragment extends LcfnLazyLoadBaseFragment {
-
-
-    private SwipeStatusViewContainer otherStatusViewContainer;
 
     @Override
     public int getResId() {
@@ -28,13 +23,6 @@ public class BlankFragment extends LcfnLazyLoadBaseFragment {
 
     }
 
-
-    @Override
-    protected StatusViewContainer initStatusViewContainer() {
-        otherStatusViewContainer = new SwipeStatusViewContainer(getContext());
-
-        return otherStatusViewContainer;
-    }
 
     @Override
     public void unbindButterKnife() {

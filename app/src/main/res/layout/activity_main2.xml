@@ -7,10 +7,10 @@
     android:background="@color/white"
     android:orientation="horizontal">
 
-    <!--<FrameLayout-->
-    <!--android:id="@+id/fl_container"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
+    <FrameLayout
+    android:id="@+id/fl_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 
     <!--<LinearLayout-->
     <!--android:id="@+id/top"-->
@@ -84,14 +84,14 @@
 
     <!--<!com.leibown.lcfn_library.swipe.SwipeRecyclerViewView>&ndash;&gt;-->
 
-    <FrameLayout
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:background="@color/tcolor_33" />
+    <!--<FrameLayout-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/tcolor_33" />-->
 
-    <com.leibown.lcfn_library.swipe.SwipeRecyclerView
-        android:id="@+id/srv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--<com.leibown.lcfn_library.swipe.SwipeRecyclerView-->
+        <!--android:id="@+id/srv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
 </LinearLayout>

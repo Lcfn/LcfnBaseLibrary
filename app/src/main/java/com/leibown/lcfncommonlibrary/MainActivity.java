@@ -4,12 +4,10 @@ import android.view.View;
 
 import com.leibown.lcfn_library.LcfnBaseActivity;
 import com.leibown.lcfn_library.swipe.SwipeRecyclerView;
-import com.leibown.library.widget.status.StatusViewContainer;
 
 public class MainActivity extends LcfnBaseActivity {
 
 
-    private OtherStatusViewContainer otherStatusViewContainer;
 
     @Override
     public void ButterKnifeInit() {
@@ -22,12 +20,6 @@ public class MainActivity extends LcfnBaseActivity {
 //        ImageView iv = findViewById(R.id.iv);
 //        ShowImageUtils.showImageView(this, "https://ws4.sinaimg.cn/large/006tKfTcgy1ftbv3p3x6tj308c08c74a.jpg", iv);
 
-    }
-
-    @Override
-    protected StatusViewContainer initStatusViewContainer() {
-        otherStatusViewContainer = new OtherStatusViewContainer(this);
-        return otherStatusViewContainer;
     }
 
     @Override
@@ -65,7 +57,6 @@ public class MainActivity extends LcfnBaseActivity {
                 showRetry();
                 break;
             case 4:
-                otherStatusViewContainer.showOtherStatusView();
                 break;
         }
     }

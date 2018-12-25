@@ -1,22 +1,18 @@
 package com.leibown.lcfncommonlibrary;
 
 import android.os.Handler;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.leibown.lcfn_library.LcfnBaseActivity;
-import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.lcfn_library.swipe.SwipeRecyclerView;
 import com.leibown.lcfn_library.utils.ToastUtils;
 import com.leibown.lcfn_library.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main2Activity extends LcfnBaseActivity {
     private SwipeRecyclerView swipeRecyclerView;
+    private BlankFragment blankFragment;
 
 //    private BlankFragment blankFragment;
 
@@ -35,50 +31,50 @@ public class Main2Activity extends LcfnBaseActivity {
         Utils.init(this);
         setTitle("阿萨德科技东方红撒旦法哈萨克的积分hiuekjnaskdjhas看见好多看");
         hideStatusBar();
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        blankFragment = new BlankFragment();
-//        FragmentTransaction add = fragmentManager.beginTransaction().replace(R.id.fl_container, blankFragment);
-//        add.commitAllowingStateLoss();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        blankFragment = new BlankFragment();
+        FragmentTransaction add = fragmentManager.beginTransaction().replace(R.id.fl_container, blankFragment);
+        add.commitAllowingStateLoss();
 
-        swipeRecyclerView = findViewById(R.id.srv);
-        swipeRecyclerView.getRecyclerView().setLayoutManager(new LinearLayoutManager(this));
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            list.add("" + i);
-        }
-        swipeRecyclerView.getRecyclerView().setAdapter(new BaseQuickAdapter<String, BaseViewHolder>(R.layout.fragment_blank, list) {
-
-            @Override
-            protected void convert(BaseViewHolder helper, String item) {
-
-            }
-        });
-        swipeRecyclerView.setOnLoadListener(new OnLoadListener() {
-            @Override
-            public void onRefresh() {
-
-            }
-
-            @Override
-            public void onLoadMore() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRecyclerView.loadComplete();
-                    }
-                }, 2000);
-            }
-
-            @Override
-            public void onRetry() {
-
-            }
-
-            @Override
-            public void onEmpty() {
-
-            }
-        });
+//        swipeRecyclerView = findViewById(R.id.srv);
+//        swipeRecyclerView.getRecyclerView().setLayoutManager(new LinearLayoutManager(this));
+//        List<String> list = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            list.add("" + i);
+//        }
+//        swipeRecyclerView.getRecyclerView().setAdapter(new BaseQuickAdapter<String, BaseViewHolder>(R.layout.fragment_blank, list) {
+//
+//            @Override
+//            protected void convert(BaseViewHolder helper, String item) {
+//
+//            }
+//        });
+//        swipeRecyclerView.setOnLoadListener(new OnLoadListener() {
+//            @Override
+//            public void onRefresh() {
+//
+//            }
+//
+//            @Override
+//            public void onLoadMore() {
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        swipeRecyclerView.loadComplete();
+//                    }
+//                }, 2000);
+//            }
+//
+//            @Override
+//            public void onRetry() {
+//
+//            }
+//
+//            @Override
+//            public void onEmpty() {
+//
+//            }
+//        });
     }
 
     @Override
@@ -106,8 +102,8 @@ public class Main2Activity extends LcfnBaseActivity {
 
     @Override
     public void Click_Back(View view) {
-//        blankFragment.doClick();
-        doClick();
+        blankFragment.doClick();
+//        doClick();
     }
 
 

@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.library.MultifunctionalFragment;
-import com.leibown.library.widget.status.StatusViewContainer;
 
 /**
  * Created by leibown on 2018/10/8.
@@ -31,6 +30,32 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
 
     @Override
     public void bindViews(Bundle savedInstanceState) {
+
+        SwipeStatusViewContainer swipeStatusViewContainer = new SwipeStatusViewContainer(getContext());
+        swipeStatusViewContainer.setOnLoadListener(new OnLoadListener() {
+            @Override
+            public void onRefresh() {
+                LcfnBaseFragment.this.onRefresh();
+            }
+
+            @Override
+            public void onLoadMore() {
+                LcfnBaseFragment.this.onLoadMore();
+            }
+
+            @Override
+            public void onRetry() {
+                onReTry();
+            }
+
+            @Override
+            public void onEmpty() {
+                LcfnBaseFragment.this.onEmpty();
+            }
+        });
+
+        setStatusContainer(swipeStatusViewContainer);
+
         getContentView().setBackgroundColor(ContextCompat.getColor(getContext(), R.color.bg_f2));
         actionBar = View.inflate(getContext(), R.layout.layout_actionbar, null);
         //设置ActionBar，传入ActionBar布局
@@ -60,32 +85,6 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
         loadData();
     }
 
-    @Override
-    protected StatusViewContainer initStatusViewContainer() {
-        SwipeStatusViewContainer swipeStatusViewContainer = new SwipeStatusViewContainer(getContext());
-        swipeStatusViewContainer.setOnLoadListener(new OnLoadListener() {
-            @Override
-            public void onRefresh() {
-                LcfnBaseFragment.this.onRefresh();
-            }
-
-            @Override
-            public void onLoadMore() {
-                LcfnBaseFragment.this.onLoadMore();
-            }
-
-            @Override
-            public void onRetry() {
-                onReTry();
-            }
-
-            @Override
-            public void onEmpty() {
-                LcfnBaseFragment.this.onEmpty();
-            }
-        });
-        return swipeStatusViewContainer;
-    }
 
     public void loadComplete() {
         if (getStatusViewContainer() instanceof SwipeStatusViewContainer)

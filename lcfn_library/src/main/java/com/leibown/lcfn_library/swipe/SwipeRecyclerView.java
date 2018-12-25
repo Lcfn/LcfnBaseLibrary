@@ -59,29 +59,7 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
 
         LayoutInflater mInflater = LayoutInflater.from(context);
         Contentview = mInflater.inflate(R.layout.view_swipe_recyclerview, null);
-        DefaultStatusView defaultStatusView = new DefaultStatusView(context);
-        mStatusContainer = new StatusViewContainer(context);
-        mStatusContainer.setStatusView(defaultStatusView);
-        mStatusContainer.setContentView(Contentview);
-
-        addView(mStatusContainer.getRootView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        mStatusContainer.showContent();
-        mStatusContainer.setOnRetryListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onLoadListener != null) {
-                    onLoadListener.onRetry();
-                }
-            }
-        });
-        mStatusContainer.setOnEmptyClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onLoadListener != null) {
-                    onLoadListener.onEmpty();
-                }
-            }
-        });
+        initStatusContainer(context, new StatusViewContainer(context));
 
         swipeRefreshLayout = Contentview.findViewById(R.id.swiperefreshlayout);
         ClassicsHeader mClassicsHeader = (ClassicsHeader) swipeRefreshLayout.getRefreshHeader();
@@ -113,6 +91,41 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
             }
         });
     }
+
+    private void initStatusContainer(Context context, StatusViewContainer statusViewContainer) {
+        DefaultStatusView defaultStatusView = new DefaultStatusView(context);
+
+        if (mStatusContainer != null) {
+            ((ViewGroup) mStatusContainer.getRootView()).removeAllViews();
+            mStatusContainer = null;
+        }
+        if (statusViewContainer == null)
+            mStatusContainer = new StatusViewContainer(context);
+        else
+            mStatusContainer = statusViewContainer;
+        mStatusContainer.setDefaultStatusView(defaultStatusView);
+        mStatusContainer.setContentView(Contentview);
+
+        addView(mStatusContainer.getRootView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mStatusContainer.showContent();
+        mStatusContainer.setOnRetryListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onLoadListener != null) {
+                    onLoadListener.onRetry();
+                }
+            }
+        });
+        mStatusContainer.setOnEmptyClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onLoadListener != null) {
+                    onLoadListener.onEmpty();
+                }
+            }
+        });
+    }
+
 
     /**
      * 显示Loading状态

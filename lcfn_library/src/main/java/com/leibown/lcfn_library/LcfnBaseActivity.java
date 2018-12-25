@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.library.MultifunctionalActivity;
 import com.leibown.library.utils.DisplayUtil;
-import com.leibown.library.widget.status.StatusViewContainer;
 
 import java.lang.ref.WeakReference;
 
@@ -33,6 +32,30 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
         getContentView().setBackgroundColor(ContextCompat.getColor(this, R.color.bg_f2));
 
         ActivityStackManager.getInstance().addActivity(new WeakReference<LcfnBaseActivity>(this));
+
+        SwipeStatusViewContainer swipeStatusViewContainer = new SwipeStatusViewContainer(this);
+        swipeStatusViewContainer.setOnLoadListener(new OnLoadListener() {
+            @Override
+            public void onRefresh() {
+                LcfnBaseActivity.this.onRefresh();
+            }
+
+            @Override
+            public void onLoadMore() {
+                LcfnBaseActivity.this.onLoadMore();
+            }
+
+            @Override
+            public void onRetry() {
+                onReTry();
+            }
+
+            @Override
+            public void onEmpty() {
+                LcfnBaseActivity.this.onEmpty();
+            }
+        });
+        setStatusContainer(swipeStatusViewContainer);
 
         //设置各种状态时中间显示的图片
         //setStatusImageViewImageResource(R.drawable.android);
@@ -74,32 +97,6 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
 
     }
 
-    @Override
-    protected StatusViewContainer initStatusViewContainer() {
-        SwipeStatusViewContainer swipeStatusViewContainer = new SwipeStatusViewContainer(this);
-        swipeStatusViewContainer.setOnLoadListener(new OnLoadListener() {
-            @Override
-            public void onRefresh() {
-                LcfnBaseActivity.this.onRefresh();
-            }
-
-            @Override
-            public void onLoadMore() {
-                LcfnBaseActivity.this.onLoadMore();
-            }
-
-            @Override
-            public void onRetry() {
-                onReTry();
-            }
-
-            @Override
-            public void onEmpty() {
-                LcfnBaseActivity.this.onEmpty();
-            }
-        });
-        return swipeStatusViewContainer;
-    }
 
     public void loadComplete() {
         if (getStatusViewContainer() instanceof SwipeStatusViewContainer)
