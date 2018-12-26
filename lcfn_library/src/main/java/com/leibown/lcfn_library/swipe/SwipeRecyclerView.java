@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.leibown.lcfn_library.R;
+import com.leibown.lcfn_library.SwipeStatusViewContainer;
 import com.leibown.library.widget.status.DefaultStatusView;
 import com.leibown.library.widget.status.IStatusViewContainer;
 import com.leibown.library.widget.status.StatusViewContainer;
@@ -128,6 +129,12 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
     }
 
     public void setStatusContainer(Context context, StatusViewContainer statusViewContainer) {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer
+                && statusViewContainer instanceof SwipeStatusViewContainer) {
+            ((SwipeStatusViewContainer) statusViewContainer)
+                    .setOnLoadListener(
+                            ((SwipeStatusViewContainer) getStatusViewContainer()).getOnLoadListener());
+        }
         initStatusContainer(context, statusViewContainer);
     }
 
