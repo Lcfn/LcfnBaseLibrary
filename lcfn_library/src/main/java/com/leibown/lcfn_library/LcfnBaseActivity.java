@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.library.MultifunctionalActivity;
 import com.leibown.library.utils.DisplayUtil;
+import com.leibown.library.widget.status.StatusViewContainer;
 
 import java.lang.ref.WeakReference;
 
@@ -97,6 +98,16 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
 
     }
 
+    @Override
+    public void setStatusContainer(StatusViewContainer statusViewContainer) {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer
+                && statusViewContainer instanceof SwipeStatusViewContainer) {
+            ((SwipeStatusViewContainer) statusViewContainer)
+                    .setOnLoadListener(
+                            ((SwipeStatusViewContainer) getStatusViewContainer()).getOnLoadListener());
+        }
+        super.setStatusContainer(statusViewContainer);
+    }
 
     public void loadComplete() {
         if (getStatusViewContainer() instanceof SwipeStatusViewContainer)

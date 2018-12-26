@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.library.MultifunctionalLazyLoadFragment;
+import com.leibown.library.widget.status.StatusViewContainer;
 
 /**
  * Created by leibown on 2018/10/8.
@@ -82,6 +83,17 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
         hideStatusBar();
         showLoading();
         initViews();
+    }
+
+    @Override
+    public void setStatusContainer(StatusViewContainer statusViewContainer) {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer
+                && statusViewContainer instanceof SwipeStatusViewContainer) {
+            ((SwipeStatusViewContainer) statusViewContainer)
+                    .setOnLoadListener(
+                            ((SwipeStatusViewContainer) getStatusViewContainer()).getOnLoadListener());
+        }
+        super.setStatusContainer(statusViewContainer);
     }
 
     public void loadComplete() {
