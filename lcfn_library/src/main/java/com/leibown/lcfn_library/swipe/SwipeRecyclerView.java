@@ -97,7 +97,7 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
 
         if (mStatusContainer != null) {
             removeAllViews();
-            ((ViewGroup) mStatusContainer.getRootView()).removeAllViews();
+            mStatusContainer.removeAllViews();
             mStatusContainer = null;
         }
         if (statusViewContainer == null)
