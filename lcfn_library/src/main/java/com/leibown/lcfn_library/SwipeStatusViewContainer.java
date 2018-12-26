@@ -58,7 +58,7 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
                 }
             }
         });
-        return smartRefreshLayout.findViewById(R.id.fl_container);
+        return smartRefreshLayout.findViewById(R.id.fl_swipe_status_container);
     }
 
     //是否可以加载更多
