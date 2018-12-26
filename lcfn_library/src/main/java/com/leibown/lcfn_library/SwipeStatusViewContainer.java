@@ -90,6 +90,10 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
         this.onLoadListener = onLoadListener;
     }
 
+    public OnLoadListener getOnLoadListener() {
+        return onLoadListener;
+    }
+
     public void loadComplete() {
         if (smartRefreshLayout.isRefreshing())
             smartRefreshLayout.finishRefresh();
