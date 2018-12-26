@@ -225,6 +225,9 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
 
     public void setOnLoadListener(OnLoadListener listener) {
         onLoadListener = listener;
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer) {
+            ((SwipeStatusViewContainer) getStatusViewContainer()).setOnLoadListener(onLoadListener);
+        }
     }
 
 
