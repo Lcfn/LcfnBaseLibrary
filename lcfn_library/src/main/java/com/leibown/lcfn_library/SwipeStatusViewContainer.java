@@ -106,6 +106,7 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
         super.showContent();
         setIsEnableRefresh(enableRefresh);
         setIsEnableLoadMore(enableLoadMore);
+        loadComplete();
     }
 
     @Override
@@ -113,6 +114,7 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
         super.showEmpty();
         setIsEnableRefresh(true);
         setIsEnableLoadMore(false);
+        loadComplete();
     }
 
     @Override
@@ -127,6 +129,7 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
         super.showError();
         setIsEnableRefresh(true);
         setIsEnableLoadMore(false);
+        loadComplete();
     }
 
 
