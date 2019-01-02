@@ -78,11 +78,13 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
 
     private void setIsEnableLoadMore(boolean enableLoadMore) {
         smartRefreshLayout.setEnableLoadMore(enableLoadMore);
+        smartRefreshLayout.setEnableNestedScroll(smartRefreshLayout.isEnableRefresh() || enableLoadMore);
         smartRefreshLayout.setEnableOverScrollDrag(smartRefreshLayout.isEnableRefresh() || enableLoadMore);
     }
 
     private void setIsEnableRefresh(boolean enableRefresh) {
         smartRefreshLayout.setEnableRefresh(enableRefresh);
+        smartRefreshLayout.setEnableNestedScroll(enableRefresh || smartRefreshLayout.isEnableLoadMore());
         smartRefreshLayout.setEnableOverScrollDrag(enableRefresh || smartRefreshLayout.isEnableLoadMore());
     }
 
