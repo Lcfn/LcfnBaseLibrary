@@ -14,11 +14,6 @@ import com.leibown.lcfn_library.SwipeStatusViewContainer;
 import com.leibown.library.widget.status.DefaultStatusView;
 import com.leibown.library.widget.status.IStatusViewContainer;
 import com.leibown.library.widget.status.StatusViewContainer;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.constant.RefreshState;
-import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 /**
  * Created by apple on 2018/4/2.
@@ -34,10 +29,9 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
     private int status = 0;
 
     private Context context;
-    private SmartRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private OnLoadListener onLoadListener;
-    private StatusViewContainer mStatusContainer;
+    private SwipeStatusViewContainer mStatusContainer;
     private View Contentview;
 
     public SwipeRecyclerView(Context context) {
@@ -61,40 +55,12 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
 
         LayoutInflater mInflater = LayoutInflater.from(context);
         Contentview = mInflater.inflate(R.layout.view_swipe_recyclerview, null);
-        initStatusContainer(context, new StatusViewContainer(context));
-
-        swipeRefreshLayout = Contentview.findViewById(R.id.swiperefreshlayout);
-        ClassicsHeader mClassicsHeader = (ClassicsHeader) swipeRefreshLayout.getRefreshHeader();
-        mClassicsHeader.setSpinnerStyle(SpinnerStyle.Scale);
-//        /设置下拉圆圈的大小，两个值 LARGE， DEFAULT
-        //        swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
-        // 设定下拉圆圈的背景:默认white
-        // swipeRefreshLayout.setProgressBackgroundColor(android.R.color.white);
-        //设置刷新时动画的颜色，可以设置4个
-
-
+        SwipeStatusViewContainer swipeStatusViewContainer = new SwipeStatusViewContainer(context);
+        initStatusContainer(context, swipeStatusViewContainer);
         recyclerView = Contentview.findViewById(R.id.recyclerview);
-
-        swipeRefreshLayout.setOnRefreshListener(new com.scwang.smartrefresh.layout.listener.OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshLayout) {
-                if (onLoadListener != null) {
-                    swipeRefreshLayout.setNoMoreData(false);
-                    onLoadListener.onRefresh();
-                }
-            }
-        });
-
-        swipeRefreshLayout.setOnLoadMoreListener(new com.scwang.smartrefresh.layout.listener.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(RefreshLayout refreshLayout) {
-                if (onLoadListener != null)
-                    onLoadListener.onLoadMore();
-            }
-        });
     }
 
-    private void initStatusContainer(Context context, StatusViewContainer statusViewContainer) {
+    private void initStatusContainer(Context context, SwipeStatusViewContainer statusViewContainer) {
         DefaultStatusView defaultStatusView = new DefaultStatusView(context);
 
         if (mStatusContainer != null) {
@@ -103,7 +69,7 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
             mStatusContainer = null;
         }
         if (statusViewContainer == null)
-            mStatusContainer = new StatusViewContainer(context);
+            mStatusContainer = new SwipeStatusViewContainer(context);
         else
             mStatusContainer = statusViewContainer;
         mStatusContainer.setDefaultStatusView(defaultStatusView);
@@ -111,28 +77,14 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
 
         addView(mStatusContainer.getRootView(), new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mStatusContainer.showContent();
-        mStatusContainer.setOnRetryListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onLoadListener != null) {
-                    onLoadListener.onRetry();
-                }
-            }
-        });
-        mStatusContainer.setOnEmptyClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onLoadListener != null) {
-                    onLoadListener.onEmpty();
-                }
-            }
-        });
+        mStatusContainer.setEnableRefresh(true);
+        mStatusContainer.setEnableLoadMore(true);
+        mStatusContainer.setOnLoadListener(onLoadListener);
     }
 
-    public void setStatusContainer(Context context, StatusViewContainer statusViewContainer) {
-        if (getStatusViewContainer() instanceof SwipeStatusViewContainer
-                && statusViewContainer instanceof SwipeStatusViewContainer) {
-            ((SwipeStatusViewContainer) statusViewContainer)
+    public void setStatusContainer(Context context, SwipeStatusViewContainer statusViewContainer) {
+        if (getStatusViewContainer() instanceof SwipeStatusViewContainer) {
+            statusViewContainer
                     .setOnLoadListener(
                             ((SwipeStatusViewContainer) getStatusViewContainer()).getOnLoadListener());
         }
@@ -216,25 +168,16 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
     }
 
     public void loadComplete() {
-        if (swipeRefreshLayout.getState() == RefreshState.Refreshing)
-            swipeRefreshLayout.finishRefresh();
-        if (swipeRefreshLayout.getState() == RefreshState.Loading)
-            swipeRefreshLayout.finishLoadMore();
+        mStatusContainer.loadComplete();
         if (status != NomalStatus)
             showContent();
     }
 
     public void setOnLoadListener(OnLoadListener listener) {
         onLoadListener = listener;
-        if (getStatusViewContainer() instanceof SwipeStatusViewContainer) {
-            ((SwipeStatusViewContainer) getStatusViewContainer()).setOnLoadListener(onLoadListener);
-        }
+        mStatusContainer.setOnLoadListener(onLoadListener);
     }
 
-
-    public SmartRefreshLayout getSwipeRefreshLayout() {
-        return swipeRefreshLayout;
-    }
 
     public RecyclerView getRecyclerView() {
         return recyclerView;
@@ -244,39 +187,39 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
      * 关闭刷新与加载更多
      */
     public void setDisnable() {
-        swipeRefreshLayout.setEnableRefresh(false);
-        swipeRefreshLayout.setEnableLoadMore(false);
+        mStatusContainer.setEnableRefresh(false);
+        mStatusContainer.setEnableLoadMore(false);
 
     }
 
     public void setEnableRefresh() {
-        swipeRefreshLayout.setEnableRefresh(true);
+        mStatusContainer.setEnableRefresh(true);
     }
 
     public void setDisableRefresh() {
-        swipeRefreshLayout.setEnableRefresh(false);
+        mStatusContainer.setEnableRefresh(false);
     }
 
 
     public void setEnableLoadMore() {
-        swipeRefreshLayout.setEnableLoadMore(true);
+        mStatusContainer.setEnableLoadMore(true);
     }
 
 
     public void setDisableLoadMore() {
-        swipeRefreshLayout.setEnableLoadMore(false);
+        mStatusContainer.setEnableLoadMore(false);
     }
 
     /**
      * 打开刷新与加载更多
      */
     public void setEnable() {
-        swipeRefreshLayout.setEnableRefresh(true);
-        swipeRefreshLayout.setEnableLoadMore(true);
+        mStatusContainer.setEnableRefresh(true);
+        mStatusContainer.setEnableLoadMore(true);
     }
 
     public void setNoMoreData() {
-        swipeRefreshLayout.setNoMoreData(true);
+        mStatusContainer.setNoMoreData();
     }
 
     /**
