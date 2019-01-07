@@ -101,9 +101,9 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
             ((SwipeStatusViewContainer) getStatusViewContainer()).loadComplete();
     }
 
-    public void setNoMoreData() {
+    public void setNoMoreData(boolean isNoMoreData) {
         if (getStatusViewContainer() instanceof SwipeStatusViewContainer)
-            ((SwipeStatusViewContainer) getStatusViewContainer()).setNoMoreData();
+            ((SwipeStatusViewContainer) getStatusViewContainer()).setNoMoreData(isNoMoreData);
     }
 
 

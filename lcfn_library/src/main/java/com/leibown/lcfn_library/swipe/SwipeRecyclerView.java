@@ -218,8 +218,8 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
         mStatusContainer.setEnableLoadMore(true);
     }
 
-    public void setNoMoreData() {
-        mStatusContainer.setNoMoreData();
+    public void setNoMoreData(boolean isNoMoreData) {
+        mStatusContainer.setNoMoreData(isNoMoreData);
     }
 
     /**

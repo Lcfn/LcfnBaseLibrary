@@ -100,8 +100,8 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
             smartRefreshLayout.finishLoadMore();
     }
 
-    public void setNoMoreData() {
-        smartRefreshLayout.setNoMoreData(true);
+    public void setNoMoreData(boolean isNoMoreData) {
+        smartRefreshLayout.setNoMoreData(isNoMoreData);
     }
 
     @Override

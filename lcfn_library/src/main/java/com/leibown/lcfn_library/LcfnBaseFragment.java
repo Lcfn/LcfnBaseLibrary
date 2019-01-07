@@ -103,9 +103,9 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
             ((SwipeStatusViewContainer) getStatusViewContainer()).loadComplete();
     }
 
-    public void setNoMoreData() {
+    public void setNoMoreData(boolean isNoMoreData) {
         if (getStatusViewContainer() instanceof SwipeStatusViewContainer)
-            ((SwipeStatusViewContainer) getStatusViewContainer()).setNoMoreData();
+            ((SwipeStatusViewContainer) getStatusViewContainer()).setNoMoreData(isNoMoreData);
     }
 
 
