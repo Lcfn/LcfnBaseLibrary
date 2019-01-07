@@ -1,12 +1,17 @@
 package com.leibown.lcfncommonlibrary;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.leibown.lcfn_library.LcfnBaseActivity;
 import com.leibown.lcfn_library.swipe.SwipeRecyclerView;
 
-public class MainActivity extends LcfnBaseActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class MainActivity extends LcfnBaseActivity {
 
 
     @Override
@@ -16,7 +21,18 @@ public class MainActivity extends LcfnBaseActivity {
 
     @Override
     protected void initViews() {
-        SwipeRecyclerView swipeRecyclerView  = findViewById(R.id.recyclerview);
+        SwipeRecyclerView swipeRecyclerView = findViewById(R.id.recyclerview);
+        swipeRecyclerView.getRecyclerView().setLayoutManager(new LinearLayoutManager(this));
+        List<String> strings = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            strings.add(i + "");
+        }
+        swipeRecyclerView.getRecyclerView().setAdapter(new BaseQuickAdapter<String, BaseViewHolder>(R.layout.layout_actionbar, strings) {
+            @Override
+            protected void convert(BaseViewHolder helper, String item) {
+                helper.setText(R.id.tv_title, item);
+            }
+        });
 //        ImageView iv = findViewById(R.id.iv);
 //        ShowImageUtils.showImageView(this, "https://ws4.sinaimg.cn/large/006tKfTcgy1ftbv3p3x6tj308c08c74a.jpg", iv);
 

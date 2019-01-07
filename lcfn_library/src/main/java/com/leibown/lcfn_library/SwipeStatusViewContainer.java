@@ -8,6 +8,7 @@ import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.library.widget.status.StatusViewContainer;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
@@ -78,14 +79,10 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
 
     private void setIsEnableLoadMore(boolean enableLoadMore) {
         smartRefreshLayout.setEnableLoadMore(enableLoadMore);
-        smartRefreshLayout.setEnableNestedScroll(smartRefreshLayout.isEnableRefresh() || enableLoadMore);
-        smartRefreshLayout.setEnableOverScrollDrag(smartRefreshLayout.isEnableRefresh() || enableLoadMore);
     }
 
     private void setIsEnableRefresh(boolean enableRefresh) {
         smartRefreshLayout.setEnableRefresh(enableRefresh);
-        smartRefreshLayout.setEnableNestedScroll(enableRefresh || smartRefreshLayout.isEnableLoadMore());
-        smartRefreshLayout.setEnableOverScrollDrag(enableRefresh || smartRefreshLayout.isEnableLoadMore());
     }
 
     public void setOnLoadListener(OnLoadListener onLoadListener) {
@@ -97,9 +94,9 @@ public class SwipeStatusViewContainer extends StatusViewContainer {
     }
 
     public void loadComplete() {
-        if (smartRefreshLayout.isRefreshing())
+        if (smartRefreshLayout.getState() == RefreshState.Refreshing)
             smartRefreshLayout.finishRefresh();
-        if (smartRefreshLayout.isLoading())
+        if (smartRefreshLayout.getState() == RefreshState.Loading)
             smartRefreshLayout.finishLoadMore();
     }
 

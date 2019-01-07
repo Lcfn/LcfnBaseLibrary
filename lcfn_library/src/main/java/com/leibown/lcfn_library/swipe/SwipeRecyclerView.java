@@ -16,6 +16,7 @@ import com.leibown.library.widget.status.IStatusViewContainer;
 import com.leibown.library.widget.status.StatusViewContainer;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
@@ -215,9 +216,9 @@ public class SwipeRecyclerView extends LinearLayout implements IStatusViewContai
     }
 
     public void loadComplete() {
-        if (swipeRefreshLayout.isRefreshing())
+        if (swipeRefreshLayout.getState() == RefreshState.Refreshing)
             swipeRefreshLayout.finishRefresh();
-        if (swipeRefreshLayout.isLoading())
+        if (swipeRefreshLayout.getState() == RefreshState.Loading)
             swipeRefreshLayout.finishLoadMore();
         if (status != NomalStatus)
             showContent();

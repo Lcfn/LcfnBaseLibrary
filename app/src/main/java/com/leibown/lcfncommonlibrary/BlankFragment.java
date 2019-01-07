@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.leibown.lcfn_library.LcfnBaseFragment;
+import com.leibown.lcfn_library.SwipeStatusViewContainer;
 import com.leibown.lcfn_library.utils.ToastUtils;
 
 /**
@@ -33,7 +34,8 @@ public class BlankFragment extends LcfnBaseFragment {
     protected void initViews() {
         setStatusBarBackgroundColor(Color.parseColor("#ee4c42"));
         getContentView().findViewById(R.id.tv_watingpay).setOnClickListener(this);
-
+        ((SwipeStatusViewContainer) getStatusViewContainer()).setEnableLoadMore(true);
+        ((SwipeStatusViewContainer) getStatusViewContainer()).setEnableRefresh(true);
         getStatusViewContainer().setOnEmptyClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
