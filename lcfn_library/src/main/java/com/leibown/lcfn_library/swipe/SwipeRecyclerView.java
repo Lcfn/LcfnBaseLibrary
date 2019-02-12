@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 
 import com.leibown.lcfn_library.R;
 import com.leibown.lcfn_library.SwipeStatusViewContainer;
-import com.leibown.library.widget.status.DefaultStatusView;
-import com.leibown.library.widget.status.IStatusViewContainer;
-import com.leibown.library.widget.status.StatusViewContainer;
+import com.leibown.lcfn_library.widget.status.DefaultStatusView;
+import com.leibown.lcfn_library.widget.status.IStatusViewContainer;
+import com.leibown.lcfn_library.widget.status.StatusViewContainer;
 
 /**
  * Created by apple on 2018/4/2.

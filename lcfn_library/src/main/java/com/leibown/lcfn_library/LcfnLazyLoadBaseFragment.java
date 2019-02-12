@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.leibown.lcfn_library.swipe.OnLoadListener;
-import com.leibown.library.MultifunctionalLazyLoadFragment;
-import com.leibown.library.widget.status.StatusViewContainer;
+import com.leibown.lcfn_library.widget.status.StatusViewContainer;
 
 /**
  * Created by leibown on 2018/10/8.
