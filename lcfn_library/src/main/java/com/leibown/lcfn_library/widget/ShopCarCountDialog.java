@@ -58,13 +58,7 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
                     return;
                 }
                 int i = Integer.parseInt(s.toString());
-                if (i >= 300) {
-                    count = 300;
-                    editText.removeTextChangedListener(this);
-                    editText.setText(String.valueOf(count));
-                    editText.setSelection(3);
-                    editText.addTextChangedListener(this);
-                } else if (i <= 0) {
+                if (i <= 0) {
                     count = 1;
                     editText.removeTextChangedListener(this);
                     editText.setText(String.valueOf(count));
@@ -100,10 +94,10 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
     }
 
     private void add() {
-        if (count < 300) {
-            count++;
-            editText.setText(String.valueOf(count));
-        }
+
+        count++;
+        editText.setText(String.valueOf(count));
+
     }
 
     private void less() {
