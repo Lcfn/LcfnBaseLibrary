@@ -17,11 +17,13 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
 
     private int count;
     private EditText editText;
+    private int maxlimit;
 
-    public ShopCarCountDialog(@NonNull Context context, int count, OnCountChangeListener onCountChangeListener) {
+    public ShopCarCountDialog(@NonNull Context context, int count, int maxlimit, OnCountChangeListener onCountChangeListener) {
         super(context, R.style.CustomStyle);
         this.onCountChangeListener = onCountChangeListener;
         this.count = count;
+        this.maxlimit = maxlimit;
     }
 
     @Override
@@ -35,6 +37,7 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
 
         editText = findViewById(R.id.tv_num);
         editText.setText(String.valueOf(count));
+        editText.setSelection(1);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -58,7 +61,13 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
                     return;
                 }
                 int i = Integer.parseInt(s.toString());
-                if (i <= 0) {
+                if (i >= maxlimit) {
+                    count = maxlimit;
+                    editText.removeTextChangedListener(this);
+                    editText.setText(String.valueOf(count));
+                    editText.setSelection(String.valueOf(count).length());
+                    editText.addTextChangedListener(this);
+                } else if (i <= 0) {
                     count = 1;
                     editText.removeTextChangedListener(this);
                     editText.setText(String.valueOf(count));
@@ -94,9 +103,10 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
     }
 
     private void add() {
-
-        count++;
-        editText.setText(String.valueOf(count));
+        if (count < maxlimit) {
+            count++;
+            editText.setText(String.valueOf(count));
+        }
 
     }
 
