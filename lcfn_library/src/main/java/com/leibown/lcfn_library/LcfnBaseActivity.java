@@ -66,7 +66,7 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
 
         actionBar = View.inflate(this, R.layout.layout_actionbar, null);
         TextView textView = actionBar.findViewById(R.id.tv_title);
-        textView.setWidth((int) (DisplayUtil.getScreenWidth(this) * 0.85));
+        textView.setWidth((int) (DisplayUtil.getScreenWidth(this) * 0.8));
 
         //设置ActionBar，传入ActionBar布局
         setActionBar(actionBar);

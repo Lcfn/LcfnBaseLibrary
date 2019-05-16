@@ -29,6 +29,7 @@ public class MainActivity extends LcfnBaseActivity {
 
     @Override
     protected void initViews() {
+        setTitle("111111111111111111111111111111111111111");
         Utils.init(this);
         swipeRecyclerView = findViewById(R.id.recyclerview);
         swipeRecyclerView.getRecyclerView().setLayoutManager(new LinearLayoutManager(this));
