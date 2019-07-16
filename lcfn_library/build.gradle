@@ -35,4 +35,7 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-18'
     testImplementation 'junit:junit:4.12'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    implementation 'com.blankj:utilcode:1.24.7'
+
 }

@@ -26,6 +26,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36'
     compile project(':lcfn_library')
-    implementation 'com.blankj:utilcode:1.24.7'
+
 
 }

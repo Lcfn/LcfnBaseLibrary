@@ -5,9 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.leibown.lcfn_library.LcfnBaseActivity;
 import com.leibown.lcfn_library.swipe.SwipeRecyclerView;
+import com.leibown.lcfn_library.utils.ToastUtils;
 import com.leibown.lcfn_library.utils.Utils;
 
 public class Main2Activity extends LcfnBaseActivity {
@@ -91,13 +91,13 @@ public class Main2Activity extends LcfnBaseActivity {
     @Override
     public void onEmpty() {
         super.onEmpty();
-        ToastUtils.showShort("点击空页面");
+        ToastUtils.show("点击空页面");
     }
 
     @Override
     public void onReTry() {
         super.onReTry();
-        ToastUtils.showShort("点击错误");
+        ToastUtils.show("点击错误");
     }
 
     @Override
