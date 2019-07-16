@@ -66,7 +66,10 @@ public abstract class LcfnBaseFragment extends MultifunctionalFragment implement
 
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
             setStatusBarViewBackgroundColor(ContextCompat.getColor(getContext(), R.color.tcolor_AA));
+            setStatusBarBackgroundColor(ContextCompat.getColor(getContext(), R.color.tcolor_AA));
 
+        } else {
+            setStatusBarBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         }
         hideActionBar();
 

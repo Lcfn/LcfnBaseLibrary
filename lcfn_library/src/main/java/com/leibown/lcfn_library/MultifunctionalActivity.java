@@ -188,6 +188,8 @@ public abstract class MultifunctionalActivity extends AppCompatActivity implemen
         statusBar.setBackgroundColor(color);
     }
 
+
+
     public void setLoadingText(String loadingText) {
         mStatusContainer.setLoadingText(loadingText);
     }

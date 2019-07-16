@@ -73,11 +73,14 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
         setActionBar(actionBar);
 
         setActionBarBackgroundColor(ContextCompat.getColor(this, R.color.white));
-        setStatusBarBackgroundColor(ContextCompat.getColor(this, R.color.white));
+
 
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
             setStatusBarViewBackgroundColor(ContextCompat.getColor(this, R.color.tcolor_AA));
+            setStatusBarBackgroundColor(ContextCompat.getColor(this, R.color.tcolor_AA));
 
+        } else {
+            setStatusBarBackgroundColor(ContextCompat.getColor(this, R.color.white));
         }
         showActionBar();
 

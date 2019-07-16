@@ -61,10 +61,12 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
         //设置ActionBar，传入ActionBar布局
         setActionBar(actionBar);
         setActionBarBackgroudColor(ContextCompat.getColor(getContext(), R.color.white));
-        setStatusBarBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
             setStatusBarViewBackgroundColor(ContextCompat.getColor(getContext(), R.color.tcolor_AA));
+            setStatusBarBackgroundColor(ContextCompat.getColor(getContext(), R.color.tcolor_AA));
 
+        } else {
+            setStatusBarBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         }
         hideActionBar();
 
