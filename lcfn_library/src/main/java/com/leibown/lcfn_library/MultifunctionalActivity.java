@@ -184,6 +184,10 @@ public abstract class MultifunctionalActivity extends AppCompatActivity implemen
         statusBarWhenActionbarHide.setBackgroundColor(color);
     }
 
+    public void setStatusBarViewBackgroundColor(int color) {
+        statusBar.setBackgroundColor(color);
+    }
+
     public void setLoadingText(String loadingText) {
         mStatusContainer.setLoadingText(loadingText);
     }

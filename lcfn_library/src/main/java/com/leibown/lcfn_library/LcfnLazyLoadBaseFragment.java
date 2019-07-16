@@ -1,6 +1,7 @@
 package com.leibown.lcfn_library;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
@@ -61,6 +62,10 @@ public abstract class LcfnLazyLoadBaseFragment extends MultifunctionalLazyLoadFr
         setActionBar(actionBar);
         setActionBarBackgroudColor(ContextCompat.getColor(getContext(), R.color.white));
         setStatusBarBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+            setStatusBarViewBackgroundColor(ContextCompat.getColor(getContext(), R.color.tcolor_AA));
+
+        }
         hideActionBar();
 
         iv_back = getContentView().findViewById(R.id.iv_back);

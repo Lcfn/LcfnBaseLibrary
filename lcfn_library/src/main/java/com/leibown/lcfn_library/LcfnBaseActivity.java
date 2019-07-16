@@ -1,6 +1,7 @@
 package com.leibown.lcfn_library;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -73,6 +74,11 @@ public abstract class LcfnBaseActivity extends MultifunctionalActivity implement
 
         setActionBarBackgroundColor(ContextCompat.getColor(this, R.color.white));
         setStatusBarBackgroundColor(ContextCompat.getColor(this, R.color.white));
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+            setStatusBarViewBackgroundColor(ContextCompat.getColor(this, R.color.tcolor_AA));
+
+        }
         showActionBar();
 
         iv_back = findViewById(R.id.iv_back);

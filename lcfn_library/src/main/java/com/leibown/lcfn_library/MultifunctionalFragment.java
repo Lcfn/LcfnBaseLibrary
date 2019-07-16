@@ -176,6 +176,9 @@ public abstract class MultifunctionalFragment extends Fragment implements IStatu
         statusBarWhenActionbarHide.setBackgroundColor(color);
     }
 
+    public void setStatusBarViewBackgroundColor(int color) {
+        statusBar.setBackgroundColor(color);
+    }
     public void setLoadingText(String loadingText) {
         mStatusContainer.getStatusView().setLoadingText(loadingText);
     }
