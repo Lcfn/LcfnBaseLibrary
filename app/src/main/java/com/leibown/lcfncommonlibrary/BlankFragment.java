@@ -5,9 +5,9 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.leibown.lcfn_library.LcfnBaseFragment;
 import com.leibown.lcfn_library.SwipeStatusViewContainer;
-import com.leibown.lcfn_library.utils.ToastUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,14 +39,14 @@ public class BlankFragment extends LcfnBaseFragment {
         getStatusViewContainer().setOnEmptyClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.show("点击了空页面");
+                ToastUtils.showShort("点击了空页面");
             }
         });
 
         getStatusViewContainer().setOnRetryListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.show("点击了错误页面");
+                ToastUtils.showShort("点击了错误页面");
             }
         });
         showContent();

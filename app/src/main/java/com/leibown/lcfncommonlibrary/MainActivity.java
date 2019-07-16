@@ -5,12 +5,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.leibown.lcfn_library.LcfnBaseActivity;
 import com.leibown.lcfn_library.swipe.OnLoadListener;
 import com.leibown.lcfn_library.swipe.SwipeRecyclerView;
-import com.leibown.lcfn_library.utils.ToastUtils;
 import com.leibown.lcfn_library.utils.Utils;
 import com.leibown.lcfn_library.widget.ShopCarCountDialog;
 
@@ -80,12 +80,12 @@ public class MainActivity extends LcfnBaseActivity {
 
             @Override
             public void onRetry() {
-                ToastUtils.show("你点击了错误");
+                ToastUtils.showShort("你点击了错误");
             }
 
             @Override
             public void onEmpty() {
-                ToastUtils.show("你点击了空");
+                ToastUtils.showShort("你点击了空");
             }
         });
     }
