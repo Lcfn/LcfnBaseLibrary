@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,10 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
     private int count;
     private EditText editText;
     private int maxlimit;
+
+    public EditText getEditText() {
+        return editText;
+    }
 
     public ShopCarCountDialog(@NonNull Context context, int count, int maxlimit, OnCountChangeListener onCountChangeListener) {
         super(context, R.style.CustomStyle);
@@ -51,13 +56,16 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() <= 0) {
+                if (s.length() < 0) {
                     count = 1;
                     editText.removeTextChangedListener(this);
                     editText.setText(String.valueOf(count));
                     editText.setSelection(1);
                     editText.addTextChangedListener(this);
                     onCountChange();
+                    return;
+                }
+                if (TextUtils.isEmpty(s.toString())) {
                     return;
                 }
                 int i = Integer.parseInt(s.toString());
@@ -67,7 +75,7 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
                     editText.setText(String.valueOf(count));
                     editText.setSelection(String.valueOf(count).length());
                     editText.addTextChangedListener(this);
-                } else if (i <= 0) {
+                } else if (i < 0) {
                     count = 1;
                     editText.removeTextChangedListener(this);
                     editText.setText(String.valueOf(count));
@@ -77,6 +85,7 @@ public class ShopCarCountDialog extends Dialog implements View.OnClickListener {
                     count = i;
                     editText.setSelection(s.length());
                 }
+
                 onCountChange();
             }
         });

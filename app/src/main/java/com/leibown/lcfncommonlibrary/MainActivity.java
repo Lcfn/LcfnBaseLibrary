@@ -2,9 +2,9 @@ package com.leibown.lcfncommonlibrary;
 
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
-
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -49,19 +49,23 @@ public class MainActivity extends LcfnBaseActivity {
         quickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ShopCarCountDialog shopCarCountDialog=new ShopCarCountDialog(MainActivity.this, 1, 200, new ShopCarCountDialog.OnCountChangeListener() {
+
+
+                ShopCarCountDialog shopCarCountDialog = new ShopCarCountDialog(MainActivity.this, 1, 200, new ShopCarCountDialog.OnCountChangeListener() {
                     @Override
                     public void onChange(int count) {
-                        Log.e("onChange",count+"");
+                        Log.e("onChange", count + "");
 
                     }
 
                     @Override
                     public void onConfirm(int count) {
-                        Log.e("onConfirm",count+"");
+                        Log.e("onConfirm", count + "");
                     }
                 });
                 shopCarCountDialog.show();
+//                shopCarCountDialog.getEditText().setFilters(new InputFilter[]{new InputFilterMinMax(0, 300)});
+
             }
         });
 
